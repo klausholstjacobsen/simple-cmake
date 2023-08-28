@@ -20,6 +20,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 target_link_libraries(${PROJECT_NAME}
 )
 
-#add_dependencies(${PROJECT_NAME}
-#    CustomCommand1
-#)
+add_dependencies(${PROJECT_NAME}
+    CustomCommand1
+)

@@ -1,9 +1,18 @@
 
-add_custom_command(
+
+IF(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  add_custom_command(
+      OUTPUT out.txt
+      COMMAND sleep 5
+      COMMAND echo "klaus" >| out.txt
+    )
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+  add_custom_command(
     OUTPUT out.txt
     COMMAND sleep 5
-    COMMAND echo "klaus" >| out.txt
+    COMMAND echo "klaus" > out.txt
   )
+endif()
 
   add_custom_target(
     CustomCommand1
