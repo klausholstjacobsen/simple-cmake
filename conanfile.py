@@ -47,6 +47,8 @@ class SimpleCmake(ConanFile):
     def build(self):
         cmake = CMake(self)
         cmake.configure()
+        #cmake.build(target="LibA")
+        #cmake.build(target="LibB")
         cmake.build(target="LibC")
 
     def package(self):
