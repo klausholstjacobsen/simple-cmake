@@ -11,6 +11,7 @@ add_library(${PROJECT_NAME}
     src/ClassB8.cpp
     src/ClassB9.cpp
     src/ClassB10.cpp
+    src/CommonClass.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC

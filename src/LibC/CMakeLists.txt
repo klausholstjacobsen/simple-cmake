@@ -2,6 +2,7 @@ project (LibC LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} 
     src/ClassC1.cpp
+    src/CommonClass.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
