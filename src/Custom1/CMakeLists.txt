@@ -10,7 +10,7 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
   add_custom_command(
     OUTPUT out.txt
     COMMAND ping -n 5 127.0.0.1
-    COMMAND echo "klaus">out.txt
+    COMMAND echo "klaus" > out.txt
   )
 endif()
 
