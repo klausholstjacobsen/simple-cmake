@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <iostream>
 
 namespace LibC {
 
@@ -8,6 +10,7 @@ public:
     ClassC1();
     virtual ~ClassC1();
 
+    std::string GetText();
 
 };
 
