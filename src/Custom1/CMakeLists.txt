@@ -1,21 +1,22 @@
 
 
-IF(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-  add_custom_command(
-      OUTPUT out.txt
-      COMMAND sleep 5
-      COMMAND echo "klaus" >| out.txt
-    )
-elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
-  add_custom_command(
-    OUTPUT out.txt
-    COMMAND ping -n 5 127.0.0.1
-    COMMAND echo "klaus" > out.txt
-  )
-endif()
+add_custom_command(
+  OUTPUT 
+    ${CMAKE_CURRENT_SOURCE_DIR}/out
+    ${CMAKE_CURRENT_SOURCE_DIR}/out/out1.txt
+    ${CMAKE_CURRENT_SOURCE_DIR}/out/out2.txt
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_SOURCE_DIR}/out
+  COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_SOURCE_DIR}/out
+  COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_SOURCE_DIR}/out/out1.txt
+  COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_SOURCE_DIR}/out/out2.txt
+  COMMENT "Generating out"
+)
 
-  add_custom_target(
-    CustomCommand1
-    DEPENDS out.txt
+add_custom_target(
+  CustomCommand1
+  DEPENDS 
+    ${CMAKE_CURRENT_SOURCE_DIR}/out
+    ${CMAKE_CURRENT_SOURCE_DIR}/out/out1.txt
+    ${CMAKE_CURRENT_SOURCE_DIR}/out/out2.txt
 )
  
