@@ -1,4 +1,5 @@
 {
     "cmake.parallelJobs": 0,
-    "cmake.sourceDirectory": "${workspaceFolder}/src"
+    "cmake.sourceDirectory": "${workspaceFolder}/src",
+    "cmake.generator": "Ninja"
 }
