@@ -1,0 +1,51 @@
+{
+  "version": 2,
+  "configurePresets": [
+    {
+      "name": "default",
+      "hidden": true,
+      "generator": "Unix Makefiles"
+    },
+    {
+      "name": "Linux",
+      "inherits": "default",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "${workspaceFolder}/conan_provider.cmake",
+        "CONAN_HOST_PROFILE": "${workspaceFolder}/profiles/x86_64-pc-linux-gnu.profile",
+        "CONAN_BUILD_PROFILE": "${workspaceFolder}/profiles/x86_64-pc-linux-gnu.profile",
+        "CONAN_INSTALL_ARGS": "--settings:host=build_type=Release"
+      }
+    },
+    {
+      "name": "Linux - Release",
+      "binaryDir": "${workspaceFolder}/out/linux/Release",
+      "inherits": "Linux",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      } 
+    },
+    {
+      "name": "Linux - Debug",
+      "binaryDir": "${workspaceFolder}/out/linux/Debug",
+      "inherits": "Linux",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "Linux - Release",
+      "configurePreset": "Linux - Release",
+      "jobs": 16
+    },
+    {
+      "name": "Linux - Debug",
+      "configurePreset": "Linux - Debug",
+      "jobs": 16
+    }
+  ],
+  "testPresets": [
+  ]
+}
