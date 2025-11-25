@@ -4,17 +4,18 @@
     {
       "name": "default",
       "hidden": true,
-      "generator": "Unix Makefiles"
+      "generator": "Unix Makefiles",
+      "cacheVariables": {
+        "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "${workspaceFolder}/conan_provider.cmake",
+        "CONAN_BUILD_PROFILE": "${workspaceFolder}/profiles/x86_64-pc-linux-gnu.profile"
+      }
     },
     {
       "name": "Linux",
       "inherits": "default",
       "hidden": true,
       "cacheVariables": {
-        "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "${workspaceFolder}/conan_provider.cmake",
-        "CONAN_HOST_PROFILE": "${workspaceFolder}/profiles/x86_64-pc-linux-gnu.profile",
-        "CONAN_BUILD_PROFILE": "${workspaceFolder}/profiles/x86_64-pc-linux-gnu.profile",
-        "CONAN_INSTALL_ARGS": "--settings:host=build_type=Release"
+        "CONAN_HOST_PROFILE": "${workspaceFolder}/profiles/x86_64-pc-linux-gnu.profile"
       }
     },
     {
@@ -22,7 +23,8 @@
       "binaryDir": "${workspaceFolder}/out/linux/Release",
       "inherits": "Linux",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release"
+        "CMAKE_BUILD_TYPE": "Release",
+        "CONAN_INSTALL_ARGS": "--settings:host=build_type=Release;--settings:host='&:build_type=Release';--output-folder=${sourceDir};-c:h='&:user.conf:binary_dir=${workspaceFolder}/out/linux/Release'"
       } 
     },
     {
@@ -30,7 +32,8 @@
       "binaryDir": "${workspaceFolder}/out/linux/Debug",
       "inherits": "Linux",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CONAN_INSTALL_ARGS": "--settings:host=build_type=Release;--settings:host='&:build_type=Debug';--output-folder=${sourceDir};-c:h='&:user.conf:binary_dir=${workspaceFolder}/out/linux/Debug'"
       }
     }
   ],

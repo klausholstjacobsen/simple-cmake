@@ -36,10 +36,15 @@ class SimpleCmake(ConanFile):
     self.requires("libcurl/8.10.0")
     self.requires("pugixml/1.15")
 
-  def layout(self):       
-    build_folder=os.path.join("out", str(self.settings.os).lower())
+  def layout(self):  
+    binary_dir = self.conf.get("user.conf:binary_dir")
+    if binary_dir:
+      build_folder=binary_dir
+    else:
+      build_folder=os.path.join("out", str(self.settings.os).lower(), str(self.settings.build_type))
+      
     cmake_layout(self, src_folder="src", build_folder=build_folder)
-    #self.folders.generators = os.path.join(build_folder, "generators")
+    self.folders.generators=os.path.join(build_folder, "conan")
 
   def config_options(self):
     if self.settings.os == "Windows":
